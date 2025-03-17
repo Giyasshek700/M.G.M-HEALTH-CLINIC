@@ -9,74 +9,105 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            background-image: url('https://www.wallpaperflare.com/static/948/70/36/hospital-operation-theater-clinic-light-wallpaper.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: white;
+            background-color: #f0f0f0;
         }
 
         header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
             text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
         }
 
         section {
-            background-color: rgba(0, 0, 0, 0.6);
-            margin: 20px;
             padding: 20px;
-            border-radius: 10px;
+            background: white;
+            margin: 20px;
+            border-radius: 8px;
         }
 
-        h1, h2 {
-            color: #FFD700;
-        }
-
-        p {
-            line-height: 1.6;
-        }
-
-        iframe {
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
             width: 100%;
-            height: 900px;
-            border: none;
+            border-radius: 4px;
+            border: 1px solid #ccc;
         }
 
-        .logo {
-            display: block;
-            margin: 0 auto 20px auto;
-            width: 150px;
-            height: auto;
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-
     <header>
-        <img src="https://www.seekpng.com/png/full/966-9665317_hospital-logo-blue.png" alt="M.G.M. HEALTH CLINIC Logo" class="logo">
         <h1>M.G.M. HEALTH CLINIC</h1>
-        <p>Comprehensive Care for Child and Gynecologist Treatment</p>
     </header>
 
-    <section>
-        <h2>Doctors Information</h2>
-        <p><strong>Dr. Giyas Uddin Sheikh:</strong> MBBS General Physician</p>
-        <p>Patient Consultation Time: 9:00 AM to 12:00 PM</p>
-        
-        <p><strong>Dr. S.K. Muskan Parven:</strong> Gynecologist</p>
-        <p>Patient Consultation Time: 1:00 PM to 6:00 PM</p>
-        
-        <p><strong>Address:</strong> Kaikhali Kachari Bazar, Gopalganj, Kultali, South 24 Parganas, West Bengal, 743338</p>
-        <p><strong>Contact Numbers:</strong> 6294700300 (WhatsApp), 7908301898</p>
-        <p><strong>Email:</strong> mgmhealthclinic191@gmail.com</p>
-    </section>
+    <section id="appointment">
+        <h2>Book an Appointment</h2>
+        <form action="send_appointment.php" method="POST">
+            <label>Patient Name:</label>
+            <input type="text" name="patient_name" required>
 
-    <section>
-        <h2>Patient Appointment Form</h2>
-        <iframe src="https://forms.gle/waH6jqbULJDAHLqE9"></iframe>
-    </section>
+            <label>Age:</label>
+            <input type="number" name="age" required>
 
+            <label>Date:</label>
+            <input type="date" name="date" required>
+
+            <label>Phone Number:</label>
+            <input type="tel" name="phone" required>
+
+            <label>Select Doctor:</label>
+            <select name="doctor">
+                <option value="Dr. Giyas Uddin Sheikh (General Physician)">Dr. Giyas Uddin Sheikh (General Physician)</option>
+                <option value="Dr. S.K. Muskan Parven (Gynecologist)">Dr. S.K. Muskan Parven (Gynecologist)</option>
+            </select>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </section>
 </body>
 </html>
+<form action="send_appointment.php" method="POST"><?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $patientName = $_POST['patient_name'];
+    $age = $_POST['age'];
+    $date = $_POST['date'];
+    $phone = $_POST['phone'];
+    $doctor = $_POST['doctor'];
+
+    $to = "mgmhealthclinic191@gmail.com";  // এখানে তোমার ইমেল আইডি দাও
+    $subject = "New Appointment Request";
+    
+    $message = "
+    New Appointment Request:
+
+    Patient Name: $patientName
+    Age: $age
+    Appointment Date: $date
+    Phone Number: $phone
+    Selected Doctor: $doctor
+    ";
+
+    $headers = "From: no-reply@mgmhealthclinic.com\r\n";
+    $headers .= "Reply-To: $phone\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+    if (mail($to, $subject, $message, $headers)) {
+        echo "আপনার অ্যাপয়েন্টমেন্ট রিকোয়েস্ট সফলভাবে জমা হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।";
+    } else {
+        echo "দুঃখিত! আপনার অ্যাপয়েন্টমেন্ট রিকোয়েস্ট জমা দিতে সমস্যা হয়েছে। আবার চেষ্টা করুন।";
+    }
+}
+?>
