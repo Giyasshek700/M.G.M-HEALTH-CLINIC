@@ -10,13 +10,33 @@
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
+            background-image: url('clinic-background.png'); /* তোমার ব্যাকগ্রাউন্ড ইমেজ ফাইল নাম এখানে দাও */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
-
+        
         header {
             background-color: #007bff;
             color: white;
             padding: 10px;
             text-align: center;
+            position: relative;
+        }
+
+        header img {
+            position: absolute;
+            left: 20px;
+            top: 5px;
+            width: 60px;
+            height: 60px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
         }
 
         section {
@@ -26,6 +46,13 @@
             border-radius: 8px;
         }
 
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+        }
+        
         input, select {
             padding: 8px;
             margin: 5px 0;
@@ -37,10 +64,10 @@
         button {
             background-color: #007bff;
             color: white;
-            padding: 10px 20px;
             border: none;
-            border-radius: 4px;
+            padding: 10px 20px;
             cursor: pointer;
+            border-radius: 4px;
         }
 
         button:hover {
@@ -50,36 +77,75 @@
 </head>
 <body>
     <header>
+        <img src="MGM-logo.png" alt="MGM Health Clinic Logo">  <!-- তোমার লোগো ফাইল নাম এখানে দাও -->
         <h1>M.G.M. HEALTH CLINIC</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#appointment">Appointment</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
+    <section id="home">
+        <h2>Welcome to M.G.M. HEALTH CLINIC</h2>
+        <p>Providing quality treatment for Children and Women's Health.</p>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing excellent healthcare services in Pediatrics and Gynecology. Our expert doctors ensure that every patient receives the best care possible.</p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Child Treatment</li>
+            <li>Gynecological Consultation</li>
+            <li>Pregnancy Care</li>
+            <li>Vaccinations</li>
+        </ul>
+    </section>
+
     <section id="appointment">
-        <h2>Book an Appointment</h2>
+        <h2>Appointment Booking</h2>
         <form action="send_appointment.php" method="POST">
             <label>Patient Name:</label>
             <input type="text" name="patient_name" required>
-
+            
             <label>Age:</label>
             <input type="number" name="age" required>
-
+            
             <label>Date:</label>
             <input type="date" name="date" required>
-
+            
             <label>Phone Number:</label>
             <input type="tel" name="phone" required>
-
+            
             <label>Select Doctor:</label>
-            <select name="doctor">
-                <option value="Dr. Giyas Uddin Sheikh (General Physician)">Dr. Giyas Uddin Sheikh (General Physician)</option>
+            <select name="doctor" required>
+                <option value="Dr. Giyas Uddin Sheikh (MBBS, General Physician)">Dr. Giyas Uddin Sheikh (MBBS, General Physician)</option>
                 <option value="Dr. S.K. Muskan Parven (Gynecologist)">Dr. S.K. Muskan Parven (Gynecologist)</option>
             </select>
-
+            
             <button type="submit">Book Appointment</button>
         </form>
     </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Address: Kaikhali Kachari Bazar, Gopalganj, Kultali, South 24 Parganas, West Bengal, 743338</p>
+        <p>Phone: 6294700300, 7908301898</p>
+        <p>WhatsApp: 6294700300</p>
+        <p>Email: mgmhealthclinic191@gmail.com</p>
+    </section>
+
+    <footer>
+        <p>© 2025 M.G.M. HEALTH CLINIC. All rights reserved.</p>
+    </footer>
 </body>
-</html>
-<form action="send_appointment.php" method="POST"><?php
+</html><?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $patientName = $_POST['patient_name'];
     $age = $_POST['age'];
