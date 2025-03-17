@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.G.M. HEALTH CLINIC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>M.G.M. HEALTH CLINIC</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#appointment">Appointment</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Welcome to M.G.M. HEALTH CLINIC</h2>
+        <p>Providing quality treatment for Children and Women's Health.</p>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing excellent healthcare services in Pediatrics and Gynecology. Our expert doctors ensure that every patient receives the best care possible.</p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Child Treatment</li>
+            <li>Gynecological Consultation</li>
+            <li>Pregnancy Care</li>
+            <li>Vaccinations</li>
+        </ul>
+    </section>
+
+    <section id="appointment">
+        <h2>Appointment Booking</h2>
+        <form>
+            <label for="patientName">Patient Name:</label>
+            <input type="text" id="patientName" name="patientName" required><br><br>
+
+            <label for="patientAge">Age:</label>
+            <input type="number" id="patientAge" name="patientAge" required><br><br>
+
+            <label for="appointmentDate">Date:</label>
+            <input type="date" id="appointmentDate" name="appointmentDate" required><br><br>
+
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required><br><br>
+
+            <label for="doctorName">Select Doctor:</label>
+            <select id="doctorName" name="doctorName" required>
+                <option value="Dr. Giyas Uddin Sheikh">Dr. Giyas Uddin Sheikh (MBBS, General Physician)</option>
+                <option value="Dr. S.K. Muskan Parven">Dr. S.K. Muskan Parven (Gynecologist)</option>
+            </select><br><br>
+
+            <input type="submit" value="Book Appointment">
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p><strong>Address:</strong> Kaikhali Kachari Bazar, Gopalganj, Kultali, South 24 Parganas, West Bengal, 743338</p>
+        <p><strong>Phone:</strong> 6294700300, 7908301898</p>
+        <p><strong>WhatsApp:</strong> 6294700300</p>
+        <p><strong>Email:</strong> mgmhealthclinic191@gmail.com</p>
+    </section>
+</body>
+</html><img src="images/doctor1.jpg" alt="Dr. Giyas Uddin Sheikh" style="width:200px; height:200px;">
+<img src="images/doctor2.jpg" alt="Dr. S.K. Muskan Parven" style="width:200px; height:200px;"><style>
+    body {
+        background-image: url('images/clinic-background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style>
